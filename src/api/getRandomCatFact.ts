@@ -1,5 +1,5 @@
 import { CatFact } from '../types/CatFact.type';
-import { isValidCatFactResponse } from '../validators/isValidCatFactResponse';
+import { isValidCatFact } from '../validators/isValidCatFact';
 import { CAT_FACT_URL } from './catFactUrls';
 
 export async function getRandomCatFact(): Promise<CatFact> {
@@ -7,7 +7,7 @@ export async function getRandomCatFact(): Promise<CatFact> {
     const response = await fetch(CAT_FACT_URL.random);
     const data = await response.json();
 
-    if (!isValidCatFactResponse(data)) {
+    if (!isValidCatFact(data)) {
       throw new Error('Invalid cat fact response');
     }
 
