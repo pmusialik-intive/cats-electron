@@ -26,7 +26,6 @@ export const DailyFact = () => {
 
   return (
     <div>
-      <h2>Daily Cat Fact</h2>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Sorry, something went wrong!</p>}
       {catFactText && <p>{catFactText}</p>}
