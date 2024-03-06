@@ -18,7 +18,7 @@ export const addFavorite = (newFavorite: CatFact): void => {
     return;
   }
 
-  const updatedFavorites = [...storedFavorites, newFavorite];
+  const updatedFavorites = [newFavorite, ...storedFavorites];
   localStorage.setItem(FAVORITE_CAT_FACTS, JSON.stringify(updatedFavorites));
 };
 
