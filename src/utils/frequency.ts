@@ -10,7 +10,7 @@ export const frequencyOptions = [
   { label: '6 hours', value: 6 * HOUR },
 ];
 
-const defaultFrequencyValue = frequencyOptions[0];
+export const defaultFrequencyValue = frequencyOptions[0].value;
 
 const isValidFrequency = (value: number) =>
   frequencyOptions.some((option) => option.value === +value);
@@ -18,7 +18,7 @@ const isValidFrequency = (value: number) =>
 export const getStoredFrequency = () => {
   const storedFrequency = +localStorage.getItem(NOTIFICATION_FREQUENCY);
 
-  return isValidFrequency(storedFrequency) ? storedFrequency : defaultFrequencyValue.value;
+  return isValidFrequency(storedFrequency) ? storedFrequency : defaultFrequencyValue;
 };
 
 export const storeFrequency = (value: unknown) => {
