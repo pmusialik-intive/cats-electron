@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { Card, CardContent } from './ui/card';
+import { LAST_CAT_FACT } from '../constants/local-storage';
 
 export const DailyFactCard = () => {
   const [catFactText, setCatFactText] = useState('');
@@ -14,6 +15,12 @@ export const DailyFactCard = () => {
         setIsLoading(false);
         setIsError(false);
         setCatFactText(fact.text);
+
+        const storageObject = {
+          id: fact._id, 
+          timestamp: new Date().getTime(),
+        };
+        localStorage.setItem(LAST_CAT_FACT, JSON.stringify(storageObject));
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
