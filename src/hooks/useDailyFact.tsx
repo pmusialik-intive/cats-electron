@@ -5,9 +5,8 @@ import {
   LAST_CAT_FACT_TIMESTAMP,
   NOTIFICATION_FREQUENCY,
 } from '../constants/local-storage';
-import { addFavorite } from '../utils/favorites';
+
 import { getRandomCatFact } from '../api/getRandomCatFact';
-import { HOUR } from '../constants/time';
 import { defaultFrequencyValue } from '../utils/frequency';
 
 export const useDailyFact = () => {
@@ -70,14 +69,5 @@ export const useDailyFact = () => {
     setShouldFetchNewFact(false);
   }, [shouldFetchNewFact]);
 
-  const addToFavorites = (fact: CatFact) => {
-    addFavorite(fact);
-  };
-
-  const handleAddToFavorites = useCallback(() => {
-    addToFavorites(catFact);
-    fetchDailyFact();
-  }, [catFact]);
-
-  return { catFact, isLoading, isError, fetchDailyFact, handleAddToFavorites };
+  return { catFact, isLoading, isError, fetchDailyFact };
 };

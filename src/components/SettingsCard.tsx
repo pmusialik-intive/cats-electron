@@ -10,11 +10,22 @@ import {
   SelectValue,
 } from './ui/select';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { frequencyOptions, getStoredFrequency, storeFrequency } from '../utils/frequency';
+import { useToast } from './ui/use-toast';
 
 export const SettingsCard = () => {
   const [localFrequency, setLocalFrequency] = useState<string>(`${getStoredFrequency()}`);
+  const { toast } = useToast();
+
+  const handleSave = useCallback(() => {
+    storeFrequency(localFrequency);
+
+    toast({
+      title: 'Success!',
+      description: 'New frequency has been saved.',
+    });
+  }, [localFrequency, toast]);
 
   return (
     <Card>
@@ -39,7 +50,7 @@ export const SettingsCard = () => {
         </Select>
       </CardContent>
       <CardFooter>
-        <Button onClick={() => storeFrequency(localFrequency)}>Save</Button>
+        <Button onClick={handleSave}>Save</Button>
       </CardFooter>
     </Card>
   );
