@@ -1,7 +1,7 @@
 import { defaultFetchingFrequencyValue, fetchingFrequencyOptions } from '../constants/frequency';
 import { FETCHING_FREQUENCY } from '../constants/local-storage';
 
-const isValidFetchingFrequency = (value: number) =>
+export const isValidFetchingFrequency = (value: number) =>
   fetchingFrequencyOptions.some((option) => option.value === +value);
 
 export const getStoredFetchingFrequency = () => {
