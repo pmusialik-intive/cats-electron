@@ -25,7 +25,7 @@ export const FavoritesCard = () => {
       <CardContent className="space-y-2 p-5">
         {favorites.map((fact) => (
           <div key={fact._id} className="flex items-center border-b py-3">
-            <p className="grow">{fact.text}</p>
+            <p className="grow line-clamp-5">{fact.text}</p>
             <button className="ml-1" onClick={() => handleRemoveFavorite(fact._id)}>
               <Trash2 strokeWidth={1.5} size={16} />
             </button>

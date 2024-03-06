@@ -35,7 +35,7 @@ export const CatFactRow = ({ fact }: Props) => {
 
   return (
     <div className="flex items-center justify-between border-b py-3">
-      <p className="flex-1" key={fact._id}>
+      <p className="flex-1 line-clamp-5" key={fact._id}>
         {fact.text}
       </p>
       <div>
