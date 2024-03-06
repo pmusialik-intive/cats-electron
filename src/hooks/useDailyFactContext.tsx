@@ -1,26 +1,49 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, createContext, useContext, ReactNode } from 'react';
 import { CatFact } from '../types/CatFact.type';
 import { LAST_CAT_FACT, LAST_CAT_FACT_TIMESTAMP } from '../constants/local-storage';
-
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { getStoredFrequency } from '../utils/frequency';
+import { useToast } from '../components/ui/use-toast';
 
-export const useDailyFact = () => {
+type DailyFactContextType = {
+  catFact: CatFact | null;
+  isLoading: boolean;
+  isError: boolean;
+  fetchDailyFact: () => void;
+};
+
+const DailyFactContext = createContext<DailyFactContextType>({
+  catFact: null,
+  isLoading: false,
+  isError: false,
+  fetchDailyFact: () => {
+    return undefined;
+  },
+});
+
+export const DailyFactProvider = ({ children }: { children: ReactNode }) => {
   // TODO validate default
   const [catFact, setCatFact] = useState<CatFact>(JSON.parse(localStorage.getItem(LAST_CAT_FACT)));
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const fetchDailyFact = useCallback(() => {
     const fetchData = async () => {
       try {
         const fact = await getRandomCatFact();
+
+        localStorage.setItem(LAST_CAT_FACT, JSON.stringify(fact));
+        localStorage.setItem(LAST_CAT_FACT_TIMESTAMP, `${new Date().getTime()}`);
+
         setIsLoading(false);
         setIsError(false);
         setCatFact(fact);
 
-        localStorage.setItem(LAST_CAT_FACT, JSON.stringify(fact));
-        localStorage.setItem(LAST_CAT_FACT_TIMESTAMP, `${new Date().getTime()}`);
+        toast({
+          title: 'Info',
+          description: 'New cat fact available!',
+        });
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
@@ -28,7 +51,6 @@ export const useDailyFact = () => {
       }
     };
 
-    setCatFact(null);
     setIsLoading(true);
     fetchData();
   }, []);
@@ -44,6 +66,8 @@ export const useDailyFact = () => {
 
     const timeSinceLastFetch = currentTime - lastTimestampNumber;
     const frequency = getStoredFrequency();
+    console.log('✒️ ||| ✒️', frequency, '<- frequency');
+
     const remainingTime = timeSinceLastFetch > frequency ? 0 : frequency - timeSinceLastFetch;
 
     const timeoutId = setTimeout(() => {
@@ -53,5 +77,11 @@ export const useDailyFact = () => {
     return () => clearTimeout(timeoutId);
   }, [catFact, fetchDailyFact]);
 
-  return { catFact, isLoading, isError, fetchDailyFact };
+  return (
+    <DailyFactContext.Provider value={{ catFact, isLoading, isError, fetchDailyFact }}>
+      {children}
+    </DailyFactContext.Provider>
+  );
 };
+
+export const useDailyFactContext = () => useContext(DailyFactContext);
