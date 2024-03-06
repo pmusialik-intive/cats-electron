@@ -34,7 +34,7 @@ export const CatFactRow = ({ fact }: Props) => {
   }, [fact, addFavorite, fetchCatFact, toast]);
 
   return (
-    <div className="flex items-center justify-between border-b py-3">
+    <>
       <p className="flex-1 line-clamp-5" key={fact._id}>
         {fact.text}
       </p>
@@ -46,6 +46,6 @@ export const CatFactRow = ({ fact }: Props) => {
           <Trash2 strokeWidth={1.5} size={16} />
         </button>
       </div>
-    </div>
+    </>
   );
 };
