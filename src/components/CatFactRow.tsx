@@ -19,7 +19,7 @@ export const CatFactRow = ({ fact }: Props) => {
 
     toast({
       title: 'Success!',
-      description: 'Cat fact removed from favorites.',
+      description: 'Cat fact removed from the list.',
     });
   }, [fact._id, removeCatFact, fetchCatFact, toast]);
 
