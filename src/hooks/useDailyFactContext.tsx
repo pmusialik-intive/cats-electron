@@ -66,8 +66,6 @@ export const DailyFactProvider = ({ children }: { children: ReactNode }) => {
 
     const timeSinceLastFetch = currentTime - lastTimestampNumber;
     const frequency = getStoredFrequency();
-    console.log('✒️ ||| ✒️', frequency, '<- frequency');
-
     const remainingTime = timeSinceLastFetch > frequency ? 0 : frequency - timeSinceLastFetch;
 
     const timeoutId = setTimeout(() => {
