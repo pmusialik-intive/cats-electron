@@ -3,6 +3,7 @@ import { Card, CardContent } from './ui/card';
 import { CatFact } from '../types/CatFact.type';
 import { getStoredFavorites, storeFavorites } from '../utils/storage-favorites';
 import { useToast } from './ui/use-toast';
+import { Trash2 } from 'lucide-react';
 
 export const FavoritesCard = () => {
   const [favorites, setFavorites] = useState<CatFact[]>(getStoredFavorites());
@@ -23,10 +24,10 @@ export const FavoritesCard = () => {
     <Card>
       <CardContent className="space-y-2 p-5">
         {favorites.map((fact) => (
-          <div key={fact._id} className="flex items-center justify-between">
-            <p>{fact.text}</p>
+          <div key={fact._id} className="flex items-center border-b py-3">
+            <p className="grow">{fact.text}</p>
             <button className="ml-1" onClick={() => handleRemoveFavorite(fact._id)}>
-              X
+              <Trash2 strokeWidth={1.5} size={16} />
             </button>
           </div>
         ))}
