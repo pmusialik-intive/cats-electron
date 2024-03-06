@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { Card, CardContent, CardFooter } from './ui/card';
 import {
@@ -35,11 +35,7 @@ export const DailyFactCard = () => {
     setShouldFetchNewFact(shouldFetchNewFact);
   }, []);
 
-  useEffect(() => {
-    if (!shouldFetchNewFact) {
-      return;
-    }
-
+  const fetchDailyFact = useCallback(() => {
     const fetchData = async () => {
       try {
         const fact = await getRandomCatFact();
@@ -59,13 +55,28 @@ export const DailyFactCard = () => {
       }
     };
 
+    setCatFact(null);
     setIsLoading(true);
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldFetchNewFact) {
+      return;
+    }
+
+    fetchDailyFact();
+    setShouldFetchNewFact(false);
   }, [shouldFetchNewFact]);
 
   const addToFavorites = (fact: CatFact) => {
     addFavorite(fact);
   };
+
+  const handleAddToFavorites = useCallback(() => {
+    addToFavorites(catFact);
+    fetchDailyFact();
+  }, [catFact]);
 
   return (
     <Card>
@@ -75,7 +86,7 @@ export const DailyFactCard = () => {
         {catFact?.text && <p>{catFact.text}</p>}
       </CardContent>
       <CardFooter>
-        <Button onClick={() => addToFavorites(catFact)}>Add to favorites</Button>
+        <Button onClick={handleAddToFavorites}>Add to favorites</Button>
       </CardFooter>
     </Card>
   );
