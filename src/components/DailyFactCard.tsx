@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getRandomCatFact } from '../api/getRandomCatFact';
+import { Card, CardContent } from './ui/card';
 
-export const DailyFact = () => {
+export const DailyFactCard = () => {
   const [catFactText, setCatFactText] = useState('');
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,10 +26,12 @@ export const DailyFact = () => {
   }, []);
 
   return (
-    <div>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Sorry, something went wrong!</p>}
-      {catFactText && <p>{catFactText}</p>}
-    </div>
+    <Card>
+      <CardContent className="space-y-2 p-5">
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Sorry, something went wrong!</p>}
+        {catFactText && <p>{catFactText}</p>}
+      </CardContent>
+    </Card>
   );
 };
