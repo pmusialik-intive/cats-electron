@@ -86,9 +86,13 @@ export const DailyFactCard = () => {
         {catFact?.text && <p>{catFact.text}</p>}
       </CardContent>
       <CardFooter>
-        <Button disabled={!catFact} onClick={handleAddToFavorites}>
-          Add to favorites
-        </Button>
+        {!isError && (
+          <Button disabled={!catFact} onClick={handleAddToFavorites}>
+            Add to favorites
+          </Button>
+        )}
+
+        {isError && <Button onClick={fetchDailyFact}>Try again</Button>}
       </CardFooter>
     </Card>
   );
