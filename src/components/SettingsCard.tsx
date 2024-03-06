@@ -9,12 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-import { useFrequency } from './hooks/useFrequency';
+
 import { useState } from 'react';
+import { frequencyOptions, getStoredFrequency, storeFrequency } from '../utils/frequency';
 
 export const SettingsCard = () => {
-  const { frequency, saveFrequency, frequencyOptions } = useFrequency();
-  const [localFrequency, setLocalFrequency] = useState<string>(`${frequency}`);
+  const [localFrequency, setLocalFrequency] = useState<string>(`${getStoredFrequency()}`);
 
   return (
     <Card>
@@ -39,7 +39,7 @@ export const SettingsCard = () => {
         </Select>
       </CardContent>
       <CardFooter>
-        <Button onClick={() => saveFrequency(localFrequency)}>Save</Button>
+        <Button onClick={() => storeFrequency(localFrequency)}>Save</Button>
       </CardFooter>
     </Card>
   );
