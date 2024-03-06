@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { HOUR, MINUTE, SECOND } from '../constants/time';
+
 import {
   Select,
   SelectContent,
@@ -9,17 +9,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-
-const frequencyOptions = [
-  { label: '10 seconds', value: `${10 * SECOND}` },
-  { label: '5 minutes', value: `${5 * MINUTE}` },
-  { label: '10 minutes', value: `${10 * MINUTE}` },
-  { label: '30 minutes', value: `${30 * MINUTE}` },
-  { label: '1 hour', value: `${1 * HOUR}` },
-  { label: '6 hours', value: `${6 * HOUR}` },
-];
+import { useFrequency } from './hooks/useFrequency';
+import { useState } from 'react';
 
 export const SettingsCard = () => {
+  const { frequency, saveFrequency, frequencyOptions } = useFrequency();
+  const [localFrequency, setLocalFrequency] = useState<string>(`${frequency}`);
+
   return (
     <Card>
       <CardHeader className="pb-0">
@@ -27,14 +23,14 @@ export const SettingsCard = () => {
         <CardDescription>Change your notifications frequency here.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2 p-5">
-        <Select value={frequencyOptions[0].value}>
+        <Select value={`${localFrequency}`} onValueChange={(value) => setLocalFrequency(value)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Frequency" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {frequencyOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem key={option.value} value={`${option.value}`}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -43,7 +39,7 @@ export const SettingsCard = () => {
         </Select>
       </CardContent>
       <CardFooter>
-        <Button>Save</Button>
+        <Button onClick={() => saveFrequency(localFrequency)}>Save</Button>
       </CardFooter>
     </Card>
   );
