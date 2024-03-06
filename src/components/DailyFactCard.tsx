@@ -2,12 +2,12 @@ import { Card, CardContent, CardFooter } from './ui/card';
 import { Button } from './ui/button';
 import { useCallback } from 'react';
 import { CatFact } from '../types/CatFact.type';
-import { addFavorite } from '../utils/favorites';
+import { addFavorite } from '../utils/storage-favorites';
 import { useToast } from './ui/use-toast';
-import { useDailyFactContext } from '../hooks/useDailyFactContext';
+import { useCatFactsContext } from '../hooks/useCatFactsContext';
 
 export const DailyFactCard = () => {
-  const { catFact, isLoading, isError, fetchDailyFact } = useDailyFactContext();
+  const { catFacts, isLoading, isError, fetchCatFact, removeCatFact } = useCatFactsContext();
   const { toast } = useToast();
 
   const addToFavorites = (fact: CatFact) => {
@@ -19,26 +19,36 @@ export const DailyFactCard = () => {
     });
   };
 
-  const handleAddToFavorites = useCallback(() => {
-    addToFavorites(catFact);
-    fetchDailyFact();
-  }, [catFact]);
+  const handleAddToFavorites = useCallback(
+    (catFact: CatFact) => {
+      addToFavorites(catFact);
+      fetchCatFact();
+    },
+    [addToFavorites, fetchCatFact],
+  );
 
   return (
     <Card>
       <CardContent className="space-y-2 p-5">
-        {!catFact && isLoading && <p>Loading...</p>}
-        {isError && <p>Sorry, something went wrong!</p>}
-        {catFact?.text && <p>{catFact.text}</p>}
+        {catFacts.length === 0 && isLoading && <p>Loading...</p>}
+        {catFacts.length === 0 && isError && <p>Sorry, something went wrong!</p>}
+
+        {catFacts.map((fact) => (
+          <div key={fact._id} className="flex items-center justify-between">
+            <p key={fact._id}>{fact.text}</p>
+            <div>
+              <button className="ml-1" onClick={() => handleAddToFavorites(fact)}>
+                +
+              </button>
+              <button className="ml-1" onClick={() => removeCatFact(fact._id)}>
+                X
+              </button>
+            </div>
+          </div>
+        ))}
       </CardContent>
       <CardFooter>
-        {!isError && (
-          <Button disabled={!catFact} onClick={handleAddToFavorites}>
-            Add to favorites
-          </Button>
-        )}
-
-        {isError && <Button onClick={fetchDailyFact}>Try again</Button>}
+        {catFacts.length === 0 && isError && <Button onClick={fetchCatFact}>Try again</Button>}
       </CardFooter>
     </Card>
   );

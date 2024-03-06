@@ -1,6 +1,5 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-
 import {
   Select,
   SelectContent,
@@ -9,17 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-
 import { useCallback, useState } from 'react';
-import { frequencyOptions, getStoredFrequency, storeFrequency } from '../utils/frequency';
 import { useToast } from './ui/use-toast';
+import { useFetchingFrequencyContext } from '../hooks/useFetchingFrequencyContext';
+import { frequencyOptions } from '../constants/frequency';
+import { Label } from './ui/label';
 
 export const SettingsCard = () => {
-  const [localFrequency, setLocalFrequency] = useState<string>(`${getStoredFrequency()}`);
+  const { fetchingFrequency, setFetchingFrequency } = useFetchingFrequencyContext();
+  const [localFrequency, setLocalFrequency] = useState<string>(`${fetchingFrequency}`);
   const { toast } = useToast();
 
   const handleSave = useCallback(() => {
-    storeFrequency(localFrequency);
+    setFetchingFrequency(+localFrequency);
 
     toast({
       title: 'Success!',
@@ -30,10 +31,11 @@ export const SettingsCard = () => {
   return (
     <Card>
       <CardHeader className="pb-0">
-        <CardTitle>Notifications frequency</CardTitle>
-        <CardDescription>Change your notifications frequency here.</CardDescription>
+        <CardTitle>Frequencies</CardTitle>
+        <CardDescription>Change your fetching and notifications frequency here.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2 p-5">
+        <Label>Fetching frequency</Label>
         <Select value={`${localFrequency}`} onValueChange={(value) => setLocalFrequency(value)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Frequency" />
