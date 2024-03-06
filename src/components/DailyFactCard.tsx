@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
 import { getRandomCatFact } from '../api/getRandomCatFact';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent, CardFooter } from './ui/card';
 import {
   LAST_CAT_FACT,
   LAST_CAT_FACT_TIMESTAMP,
   NOTIFICATION_FREQUENCY,
 } from '../constants/local-storage';
 import { HOUR } from '../constants/time';
+import { Button } from './ui/button';
+import { CatFact } from '../types/CatFact.type';
+import { addFavorite } from '../utils/favorites';
 
 export const DailyFactCard = () => {
-  const [catFactText, setCatFactText] = useState('');
+  const [catFact, setCatFact] = useState<CatFact>();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [shouldFetchNewFact, setShouldFetchNewFact] = useState(false);
@@ -42,7 +45,7 @@ export const DailyFactCard = () => {
         const fact = await getRandomCatFact();
         setIsLoading(false);
         setIsError(false);
-        setCatFactText(fact.text);
+        setCatFact(fact);
 
         const storageFact = {
           id: fact._id,
@@ -52,7 +55,7 @@ export const DailyFactCard = () => {
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
-        setCatFactText('');
+        setCatFact(null);
       }
     };
 
@@ -60,13 +63,20 @@ export const DailyFactCard = () => {
     fetchData();
   }, [shouldFetchNewFact]);
 
+  const addToFavorites = (fact: CatFact) => {
+    addFavorite(fact);
+  };
+
   return (
     <Card>
       <CardContent className="space-y-2 p-5">
         {isLoading && <p>Loading...</p>}
         {isError && <p>Sorry, something went wrong!</p>}
-        {catFactText && <p>{catFactText}</p>}
+        {catFact?.text && <p>{catFact.text}</p>}
       </CardContent>
+      <CardFooter>
+        <Button onClick={() => addToFavorites(catFact)}>Add to favorites</Button>
+      </CardFooter>
     </Card>
   );
 };
