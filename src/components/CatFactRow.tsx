@@ -34,11 +34,13 @@ export const CatFactRow = ({ fact }: Props) => {
   }, [fact, addFavorite, fetchCatFact, toast]);
 
   return (
-    <>
+    <div
+      className={`group flex items-center justify-between py-3 border-b last:pb-0 last:border-0`}
+    >
       <p className="flex-1 line-clamp-5" key={fact._id}>
         {fact.text}
       </p>
-      <div>
+      <div className="invisible group-hover:visible">
         <button className="ml-1" onClick={handleAddToFavorites}>
           <Star strokeWidth={1.5} size={16} />
         </button>
@@ -46,6 +48,6 @@ export const CatFactRow = ({ fact }: Props) => {
           <Trash2 strokeWidth={1.5} size={16} />
         </button>
       </div>
-    </>
+    </div>
   );
 };

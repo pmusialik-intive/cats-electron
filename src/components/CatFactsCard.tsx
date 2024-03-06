@@ -13,14 +13,8 @@ export const CatFactsCard = () => {
         {catFacts.length === 0 && isLoading && <p>Loading...</p>}
         {catFacts.length === 0 && isError && <p>Sorry, something went wrong!</p>}
 
-        {catFacts.map((fact, i) => (
-          <div
-            className={`flex items-center justify-between py-3 ${
-              i !== catFacts.length - 1 && 'border-b'
-            }`}
-          >
-            <CatFactRow key={fact._id} fact={fact} />
-          </div>
+        {catFacts.map((fact) => (
+          <CatFactRow key={fact._id} fact={fact} />
         ))}
       </CardContent>
       <CardFooter>
