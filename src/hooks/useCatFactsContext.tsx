@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState, createContext, useContext, ReactNode 
 import { CatFact } from '../types/CatFact.type';
 import { LAST_CAT_FACT_TIMESTAMP } from '../constants/local-storage';
 import { getRandomCatFact } from '../api/getRandomCatFact';
-import { useToast } from '../components/ui/use-toast';
 import { useFetchingFrequencyContext } from './useFetchingFrequencyContext';
 
 type CatFactsContextType = {
@@ -29,7 +28,6 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
   const [catFacts, setCatFacts] = useState<CatFact[]>([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
   const { fetchingFrequency } = useFetchingFrequencyContext();
 
   const fetchCatFact = useCallback(() => {
@@ -41,19 +39,12 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading(false);
         setIsError(false);
         setCatFacts((facts) => [fact, ...facts]);
-
-        toast({
-          title: 'Info',
-          description: 'New cat fact available!',
-        });
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
-        setCatFacts(null);
       }
     };
 
-    setIsLoading(true);
     setIsLoading(true);
     fetchData();
   }, []);
@@ -66,7 +57,7 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
     const lastTimestampNumber = +localStorage.getItem(LAST_CAT_FACT_TIMESTAMP);
     const currentTime = new Date().getTime();
 
-    if (isNaN(lastTimestampNumber) || lastTimestampNumber > currentTime || !catFacts) {
+    if (isNaN(lastTimestampNumber) || lastTimestampNumber > currentTime || !catFacts.length) {
       fetchCatFact();
       return;
     }
