@@ -1,5 +1,5 @@
 export const TAB_ID = {
-  dailyFact: 'daily-fact',
+  catFacts: 'cat-facts',
   favorites: 'favorites',
   settings: 'settings',
 } as const;

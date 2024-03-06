@@ -6,7 +6,7 @@ import { addFavorite } from '../utils/storage-favorites';
 import { useToast } from './ui/use-toast';
 import { useCatFactsContext } from '../hooks/useCatFactsContext';
 
-export const DailyFactCard = () => {
+export const CatFactsCard = () => {
   const { catFacts, isLoading, isError, fetchCatFact, removeCatFact } = useCatFactsContext();
   const { toast } = useToast();
 

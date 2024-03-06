@@ -1,14 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { TAB_ID } from '../constants/tabs';
-import { DailyFactCard } from './DailyFactCard';
+import { CatFactsCard } from './CatFactsCard';
 import { FavoritesCard } from './FavoritesCard';
 import { SettingsCard } from './SettingsCard';
 
 const tabs = [
   {
-    id: TAB_ID.dailyFact,
-    label: 'Daily Fact',
-    content: <DailyFactCard />,
+    id: TAB_ID.catFacts,
+    label: 'Cat Facts',
+    content: <CatFactsCard />,
   },
   {
     id: TAB_ID.favorites,
@@ -25,7 +25,7 @@ const tabs = [
 export const AppTabs = () => {
   return (
     <main>
-      <Tabs defaultValue={TAB_ID.dailyFact} className="w-[800px] mt-5 mx-auto">
+      <Tabs defaultValue={TAB_ID.catFacts} className="w-[800px] mt-5 mx-auto">
         <TabsList className={`grid w-full grid-cols-3`}>
           {tabs.map((tab) => (
             <TabsTrigger key={tab.id} value={tab.id}>
