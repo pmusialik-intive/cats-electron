@@ -24,22 +24,20 @@ const tabs = [
 
 export const AppTabs = () => {
   return (
-    <main>
-      <Tabs defaultValue={TAB_ID.catFacts} className="w-[800px] mt-5 mx-auto">
-        <TabsList className={`grid w-full grid-cols-3`}>
-          {tabs.map((tab) => (
-            <TabsTrigger key={tab.id} value={tab.id}>
-              {tab.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
+    <Tabs defaultValue={TAB_ID.catFacts} className="w-[800px] mt-5 mx-auto">
+      <TabsList className={`grid w-full grid-cols-3`}>
         {tabs.map((tab) => (
-          <TabsContent key={tab.id} value={tab.id}>
-            {tab.content}
-          </TabsContent>
+          <TabsTrigger key={tab.id} value={tab.id}>
+            {tab.label}
+          </TabsTrigger>
         ))}
-      </Tabs>
-    </main>
+      </TabsList>
+
+      {tabs.map((tab) => (
+        <TabsContent key={tab.id} value={tab.id}>
+          {tab.content}
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 };
