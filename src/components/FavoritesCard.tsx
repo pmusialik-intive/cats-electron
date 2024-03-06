@@ -25,7 +25,9 @@ export const FavoritesCard = () => {
         {favorites.map((fact) => (
           <div key={fact._id} className="flex items-center justify-between">
             <p>{fact.text}</p>
-            <button onClick={() => handleRemoveFavorite(fact._id)}>X</button>
+            <button className="ml-1" onClick={() => handleRemoveFavorite(fact._id)}>
+              X
+            </button>
           </div>
         ))}
       </CardContent>
