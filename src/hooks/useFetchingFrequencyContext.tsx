@@ -7,7 +7,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
-import { getStoredFrequency, storeFrequency } from '../utils/storage-frequency';
+import { getStoredFetchingFrequency, storeFetchingFrequency } from '../utils/fetching-frequency';
 
 type FrequencyContextType = {
   fetchingFrequency: number;
@@ -15,17 +15,17 @@ type FrequencyContextType = {
 };
 
 const FetchingFrequencyContext = createContext<FrequencyContextType>({
-  fetchingFrequency: getStoredFrequency(),
+  fetchingFrequency: getStoredFetchingFrequency(),
   setFetchingFrequency: () => {
     return undefined;
   },
 });
 
 export const FetchingFrequencyProvider = ({ children }: { children: ReactNode }) => {
-  const [fetchingFrequency, setFetchingFrequency] = useState(getStoredFrequency());
+  const [fetchingFrequency, setFetchingFrequency] = useState(getStoredFetchingFrequency());
 
   useEffect(() => {
-    storeFrequency(fetchingFrequency);
+    storeFetchingFrequency(fetchingFrequency);
   }, [fetchingFrequency]);
 
   return (
