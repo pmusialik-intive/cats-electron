@@ -3,7 +3,8 @@ import { CatFact } from '../../types/CatFact';
 import { getRandomCatFact } from '../../api/getRandomCatFact';
 import { useFetchingFrequencyContext } from '../useFetchingFrequencyContext';
 import { STORAGE_KEY } from '../../constants/storage-key';
-import { calculateTimeToFetch, isLastFetchingTimestampValid } from './shouldFetchFactImmediately';
+import { isLastFetchingTimestampValid } from '../../utils/isLastFetchingTimestampValid';
+import { calculateTimeToFetch } from '../../utils/calculateTimeToFetch';
 
 type CatFactsContextType = {
   catFacts: CatFact[];
