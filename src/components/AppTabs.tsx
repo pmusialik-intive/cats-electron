@@ -24,7 +24,7 @@ const tabs = [
 
 export const AppTabs = () => {
   return (
-    <Tabs defaultValue={TAB_ID.catFacts} className="w-[800px] mt-5 mx-auto">
+    <Tabs defaultValue={TAB_ID.catFacts} className="mt-5">
       <TabsList className={`grid w-full grid-cols-3`}>
         {tabs.map((tab) => (
           <TabsTrigger key={tab.id} value={tab.id}>

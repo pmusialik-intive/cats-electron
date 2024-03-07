@@ -5,7 +5,7 @@ import { Toaster } from './ui/toaster';
 export const App = () => {
   return (
     <AppProviders>
-      <main>
+      <main className="container mx-auto">
         <AppTabs />
       </main>
       <Toaster />
