@@ -11,3 +11,13 @@ This Electron app keeps you up-to-date with the latest cat facts! Receive notifi
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Installing
+
+1. Clone the repository to your local machine:
+
+2. Install the dependencies:
+   `npm install`
+
+3. Start the application:
+   `npm start`
