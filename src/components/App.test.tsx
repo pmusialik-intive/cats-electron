@@ -1,8 +1,8 @@
 import { render, act, waitFor, screen } from '@testing-library/react';
 import { App } from './App';
-import { wrapWithProviders } from '../test-utils/wrapWithProviders';
 import { CAT_FACT_URL } from '../api/catFactUrls';
 import '@testing-library/jest-dom';
+import { AppProviders } from './AppProviders';
 
 const mockText = 'Cats are nice';
 
@@ -19,13 +19,21 @@ describe('App', () => {
 
   test('renders the app without crashing', async () => {
     await act(async () => {
-      render(wrapWithProviders(<App />));
+      render(
+        <AppProviders>
+          <App />
+        </AppProviders>,
+      );
     });
   });
 
   test('sends a proper request when the component mounts', async () => {
     await act(async () => {
-      render(wrapWithProviders(<App />));
+      render(
+        <AppProviders>
+          <App />
+        </AppProviders>,
+      );
     });
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
@@ -34,7 +42,11 @@ describe('App', () => {
 
   test('displays fetched data after receiving the response', async () => {
     await act(async () => {
-      render(wrapWithProviders(<App />));
+      render(
+        <AppProviders>
+          <App />
+        </AppProviders>,
+      );
     });
 
     await waitFor(() => expect(screen.getByText(mockText)).toBeVisible());
