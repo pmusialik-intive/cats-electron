@@ -4,5 +4,5 @@ export const STORAGE_KEY = {
   notificationFrequency: 'notificationFrequency',
   fetchingFrequency: 'fetchingFrequency',
   newFactsNotificationFactTimestamp: 'newFactsNotificationFactTimestamp',
-  notifiedFactdIds: 'notifiedFactdIds',
+  notifiedFactsIds: 'notifiedFactsIds',
 } as const;
