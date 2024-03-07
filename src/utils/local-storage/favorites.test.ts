@@ -1,9 +1,4 @@
-import {
-  getStoredFavorites,
-  storeFavorites,
-  addFavorite,
-  removeFavorite,
-} from './storage-favorites';
+import { getStoredFavorites, storeFavorites, addFavorite, removeFavorite } from './favorites';
 
 describe('Storage Favorites', () => {
   beforeEach(() => {
