@@ -1,9 +1,9 @@
+import { localStorageMock } from '../../components/mocks/localStorageMock';
 import {
   defaultFetchingFrequencyValue,
   fetchingFrequencyOptions,
 } from '../../constants/fetching-frequency';
 import { STORAGE_KEY } from '../../constants/storage-key';
-import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredFetchingFrequency,
   isValidFetchingFrequency,

@@ -1,9 +1,9 @@
+import { localStorageMock } from '../../components/mocks/localStorageMock';
 import {
   defaultNotificationFrequencyValue,
   notificationFrequencyOptions,
 } from '../../constants/notification-frequency';
 import { STORAGE_KEY } from '../../constants/storage-key';
-import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredNotificationFrequency,
   isValidNotificationFrequency,
