@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState, createContext, useContext, ReactNode } from 'react';
-import { CatFact } from '../types/CatFact';
-import { getRandomCatFact } from '../api/getRandomCatFact';
-import { useFetchingFrequencyContext } from './useFetchingFrequencyContext';
-import { STORAGE_KEY } from '../constants/storage-key';
+import { CatFact } from '../../types/CatFact';
+import { getRandomCatFact } from '../../api/getRandomCatFact';
+import { useFetchingFrequencyContext } from '../useFetchingFrequencyContext';
+import { STORAGE_KEY } from '../../constants/storage-key';
+import { calculateTimeToFetch, isLastFetchingTimestampValid } from './shouldFetchFactImmediately';
 
 type CatFactsContextType = {
   catFacts: CatFact[];
@@ -54,21 +55,16 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    const lastTimestampNumber = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
-    const currentTime = new Date().getTime();
+    const lastFetchingTimestamp = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
 
-    if (isNaN(lastTimestampNumber) || lastTimestampNumber > currentTime || !catFacts.length) {
+    if (!catFacts.length || !isLastFetchingTimestampValid(lastFetchingTimestamp)) {
       fetchCatFact();
       return;
     }
 
-    const timeSinceLastFetch = currentTime - lastTimestampNumber;
-    const remainingTime =
-      timeSinceLastFetch > fetchingFrequency ? 0 : fetchingFrequency - timeSinceLastFetch;
-
     const timeoutId = setTimeout(() => {
       fetchCatFact();
-    }, remainingTime);
+    }, calculateTimeToFetch(fetchingFrequency, lastFetchingTimestamp));
 
     return () => clearTimeout(timeoutId);
   }, [fetchingFrequency, catFacts, fetchCatFact]);

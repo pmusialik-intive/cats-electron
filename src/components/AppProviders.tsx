@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { CatFactsProvider } from '../hooks/useCatFactsContext';
+import { CatFactsProvider } from '../hooks/cat-facts/useCatFactsContext';
 import { FetchingFrequencyProvider } from '../hooks/useFetchingFrequencyContext';
 import { NotificationFrequencyProvider } from '../hooks/useNotificationFrequencyContext';
 

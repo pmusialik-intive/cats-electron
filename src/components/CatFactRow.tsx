@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { CatFact } from '../types/CatFact';
 import { addFavorite } from '../utils/local-storage/favorites';
 import { useToast } from './ui/use-toast';
-import { useCatFactsContext } from '../hooks/useCatFactsContext';
+import { useCatFactsContext } from '../hooks/cat-facts/useCatFactsContext';
 import { Star, Trash2 } from 'lucide-react';
 
 interface Props {

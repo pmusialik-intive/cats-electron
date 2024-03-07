@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { FetchingFrequencyProvider } from '../hooks/useFetchingFrequencyContext';
-import { CatFactsProvider } from '../hooks/useCatFactsContext';
+import { CatFactsProvider } from '../hooks/cat-facts/useCatFactsContext';
 import { NotificationFrequencyProvider } from '../hooks/useNotificationFrequencyContext';
 
 export function wrapWithProviders(component: ReactNode) {
