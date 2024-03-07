@@ -23,13 +23,19 @@ describe('App', () => {
     });
   });
 
-  test('sends a request when the component mounts', async () => {
+  test('sends a proper request when the component mounts', async () => {
     await act(async () => {
       render(wrapWithProviders(<App />));
     });
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
     expect(global.fetch).toHaveBeenCalledWith(CAT_FACT_URL.random);
+  });
+
+  test('displays fetched data after receiving the response', async () => {
+    await act(async () => {
+      render(wrapWithProviders(<App />));
+    });
 
     await waitFor(() => expect(screen.getByText(mockText)).toBeVisible());
   });
