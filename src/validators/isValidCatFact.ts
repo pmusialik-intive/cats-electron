@@ -1,4 +1,4 @@
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 
 export const isValidCatFact = (data: unknown): data is CatFact => {
   return (

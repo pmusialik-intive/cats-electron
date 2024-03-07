@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 import { addFavorite } from '../utils/storage-favorites';
 import { useToast } from './ui/use-toast';
 import { useCatFactsContext } from '../hooks/useCatFactsContext';

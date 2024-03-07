@@ -1,5 +1,5 @@
 import { isValidCatFact } from './isValidCatFact';
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 
 describe('isValidCatFact', () => {
   it('returns true for valid CatFact response', () => {

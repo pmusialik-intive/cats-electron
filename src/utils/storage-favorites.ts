@@ -1,5 +1,5 @@
 import { FAVORITE_CAT_FACTS } from '../constants/local-storage';
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 
 export const getStoredFavorites = (): CatFact[] => {
   const storedFavorites = localStorage.getItem(FAVORITE_CAT_FACTS);

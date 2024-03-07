@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Card, CardContent } from './ui/card';
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 import { getStoredFavorites, storeFavorites } from '../utils/storage-favorites';
 import { useToast } from './ui/use-toast';
 import { Trash2 } from 'lucide-react';

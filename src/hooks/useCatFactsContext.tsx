@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, createContext, useContext, ReactNode } from 'react';
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 import { LAST_CAT_FACT_TIMESTAMP } from '../constants/local-storage';
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { useFetchingFrequencyContext } from './useFetchingFrequencyContext';

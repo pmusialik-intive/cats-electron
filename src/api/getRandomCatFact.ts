@@ -1,4 +1,4 @@
-import { CatFact } from '../types/CatFact.type';
+import { CatFact } from '../types/CatFact';
 import { isValidCatFact } from '../validators/isValidCatFact';
 import { CAT_FACT_URL } from './catFactUrls';
 
