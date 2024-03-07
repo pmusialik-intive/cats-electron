@@ -2,7 +2,7 @@
   "name": "cats-electron",
   "productName": "cats-electron",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "This Electron app keeps you up-to-date with the latest cat facts! Receive notifications directly on your desktop and never miss out on fun and interesting cat facts again.",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
