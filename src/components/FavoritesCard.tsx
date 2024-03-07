@@ -23,6 +23,7 @@ export const FavoritesCard = () => {
   return (
     <Card>
       <CardContent className="space-y-2 p-5">
+        {favorites.length === 0 && <p className="text-center">No favorites yet.</p>}
         {favorites.map((fact) => (
           <div key={fact._id} className="flex items-center border-b py-3">
             <p className="grow line-clamp-5">{fact.text}</p>
