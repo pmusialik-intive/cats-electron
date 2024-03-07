@@ -10,8 +10,8 @@ import {
 import { useCallback, useState } from 'react';
 import { useToast } from './ui/use-toast';
 import { useNotificationFrequencyContext } from '../hooks/useNotificationFrequencyContext';
-import { notificationFrequencyOptions } from '../constants/frequency';
 import { Label } from './ui/label';
+import { notificationFrequencyOptions } from '../constants/notification-frequency';
 
 export const NotificationFrequencySettings = () => {
   const { toast } = useToast();

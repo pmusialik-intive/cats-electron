@@ -10,8 +10,8 @@ import {
 import { useCallback, useState } from 'react';
 import { useToast } from './ui/use-toast';
 import { useFetchingFrequencyContext } from '../hooks/useFetchingFrequencyContext';
-import { fetchingFrequencyOptions } from '../constants/frequency';
 import { Label } from './ui/label';
+import { fetchingFrequencyOptions } from '../constants/fetching-frequency';
 
 export const FetchingFrequencySettings = () => {
   const { toast } = useToast();

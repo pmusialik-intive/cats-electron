@@ -1,8 +1,8 @@
+import { NOTIFICATION_FREQUENCY } from '../constants/local-storage';
 import {
   defaultNotificationFrequencyValue,
   notificationFrequencyOptions,
-} from '../constants/frequency';
-import { NOTIFICATION_FREQUENCY } from '../constants/local-storage';
+} from '../constants/notification-frequency';
 
 export const isValidNotificationFrequency = (value: number) =>
   notificationFrequencyOptions.some((option) => option.value === +value);
