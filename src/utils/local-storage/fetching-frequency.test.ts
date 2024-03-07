@@ -1,9 +1,9 @@
 import {
   defaultFetchingFrequencyValue,
   fetchingFrequencyOptions,
-} from '../constants/fetching-frequency';
-import { FETCHING_FREQUENCY } from '../constants/local-storage';
-import { localStorageMock } from '../test-utils/localStorageMock';
+} from '../../constants/fetching-frequency';
+import { FETCHING_FREQUENCY } from '../../constants/local-storage';
+import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredFetchingFrequency,
   isValidFetchingFrequency,

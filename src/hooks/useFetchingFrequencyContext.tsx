@@ -7,7 +7,10 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
-import { getStoredFetchingFrequency, storeFetchingFrequency } from '../utils/fetching-frequency';
+import {
+  getStoredFetchingFrequency,
+  storeFetchingFrequency,
+} from '../utils/local-storage/fetching-frequency';
 
 type FrequencyContextType = {
   fetchingFrequency: number;

@@ -1,9 +1,9 @@
-import { NOTIFICATION_FREQUENCY } from '../constants/local-storage';
+import { NOTIFICATION_FREQUENCY } from '../../constants/local-storage';
 import {
   defaultNotificationFrequencyValue,
   notificationFrequencyOptions,
-} from '../constants/notification-frequency';
-import { localStorageMock } from '../test-utils/localStorageMock';
+} from '../../constants/notification-frequency';
+import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredNotificationFrequency,
   isValidNotificationFrequency,

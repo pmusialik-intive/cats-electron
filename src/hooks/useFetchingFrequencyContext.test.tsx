@@ -4,7 +4,7 @@ import {
   useFetchingFrequencyContext,
 } from './useFetchingFrequencyContext';
 import '@testing-library/jest-dom';
-import { storeFetchingFrequency } from '../utils/fetching-frequency';
+import { storeFetchingFrequency } from '../utils/local-storage/fetching-frequency';
 
 const UPDATE_FREQUENCY_TEXT = 'Update Frequency';
 const UPDATE_FREQUENCY_VALUE = 10000;

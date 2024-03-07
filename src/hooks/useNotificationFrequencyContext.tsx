@@ -10,7 +10,7 @@ import {
 import {
   getStoredNotificationFrequency,
   storeNotificationFrequency,
-} from '../utils/notification-frequency';
+} from '../utils/local-storage/notification-frequency';
 import {
   LAST_CAT_FACT_TIMESTAMP,
   NEW_FACTS_NOTIFICATION_FACT_TIMESTAMP,
