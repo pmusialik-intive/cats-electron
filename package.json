@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -28,6 +25,8 @@
     "@electron-forge/plugin-fuses": "^7.2.0",
     "@electron-forge/plugin-vite": "^7.3.0",
     "@electron/fuses": "^1.7.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
