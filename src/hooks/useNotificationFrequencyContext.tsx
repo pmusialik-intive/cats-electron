@@ -13,6 +13,9 @@ import {
 } from '../utils/local-storage/notification-frequency';
 import { useToast } from '../components/ui/use-toast';
 import { STORAGE_KEY } from '../constants/storage-key';
+import { areNewFactsAvailable } from '../utils/areNewFactsAvailable';
+import { useCatFactsContext } from './useCatFactsContext';
+import { calculateTimeToFetch } from '../utils/calculateTimeToFetch';
 
 type FrequencyContextType = {
   notificationFrequency: number;
@@ -26,21 +29,9 @@ const NotificationFrequencyContext = createContext<FrequencyContextType>({
   },
 });
 
-const isLastFactDifferent = () => {
-  const lastNotificationFactTimestamp = +localStorage.getItem(
-    STORAGE_KEY.newFactsNotificationFactTimestamp,
-  );
-  const lastCatFactTimestamp = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
-
-  if (isNaN(lastNotificationFactTimestamp) || isNaN(lastCatFactTimestamp)) {
-    return false;
-  }
-
-  return lastNotificationFactTimestamp !== lastCatFactTimestamp;
-};
-
 export const NotificationFrequencyProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
+  const { catFacts } = useCatFactsContext();
   const [notificationFrequency, setNotificationFrequency] = useState(
     getStoredNotificationFrequency(),
   );
@@ -50,8 +41,10 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
   }, [notificationFrequency]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (isLastFactDifferent()) {
+    const lastNotifiedTimestamp = +localStorage.getItem(STORAGE_KEY.notifiedTimestamp);
+
+    const timeoutId = setTimeout(() => {
+      if (areNewFactsAvailable(catFacts)) {
         toast({
           title: 'Info',
           description: 'Cat facts changed!',
@@ -59,15 +52,17 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
       }
 
       localStorage.setItem(
-        STORAGE_KEY.newFactsNotificationFactTimestamp,
-        localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp),
+        STORAGE_KEY.notifiedFactsIds,
+        JSON.stringify(catFacts.map((fact) => fact._id)),
       );
-    }, notificationFrequency);
+
+      localStorage.setItem(STORAGE_KEY.notifiedTimestamp, new Date().getTime().toString());
+    }, calculateTimeToFetch(notificationFrequency, lastNotifiedTimestamp));
 
     return () => {
-      clearInterval(intervalId);
+      clearTimeout(timeoutId);
     };
-  }, [notificationFrequency, toast]);
+  }, [catFacts, notificationFrequency, toast]);
 
   return (
     <NotificationFrequencyContext.Provider

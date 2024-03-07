@@ -3,7 +3,7 @@ import { CatFact } from '../types/CatFact';
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { useFetchingFrequencyContext } from './useFetchingFrequencyContext';
 import { STORAGE_KEY } from '../constants/storage-key';
-import { isLastFetchingTimestampValid } from '../utils/isLastFetchingTimestampValid';
+import { isLastTimestampValid } from '../utils/isLastTimestampValid';
 import { calculateTimeToFetch } from '../utils/calculateTimeToFetch';
 
 type CatFactsContextType = {
@@ -58,7 +58,7 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const lastFetchingTimestamp = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
 
-    if (!catFacts.length || !isLastFetchingTimestampValid(lastFetchingTimestamp)) {
+    if (!catFacts.length || !isLastTimestampValid(lastFetchingTimestamp)) {
       fetchCatFact();
       return;
     }

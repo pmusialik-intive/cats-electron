@@ -1,4 +1,4 @@
-export const isLastFetchingTimestampValid = (timestamp: number) => {
+export const isLastTimestampValid = (timestamp: number) => {
   if (timestamp <= 0 || isNaN(timestamp)) {
     return false;
   }
