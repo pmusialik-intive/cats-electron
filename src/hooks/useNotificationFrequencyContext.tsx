@@ -47,7 +47,7 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
       if (areNewFactsAvailable(catFacts)) {
         toast({
           title: 'Info',
-          description: 'Cat facts changed!',
+          description: 'New cat facts available!',
         });
       }
 
