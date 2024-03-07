@@ -1,4 +1,4 @@
-import { localStorageMock } from '../../components/mocks/localStorageMock';
+import { localStorageMock } from '../../mocks/localStorageMock';
 import {
   defaultNotificationFrequencyValue,
   notificationFrequencyOptions,

@@ -1,5 +1,5 @@
 import { areNewFactsAvailable } from './areNewFactsAvailable';
-import { localStorageMock } from '../components/mocks/localStorageMock';
+import { localStorageMock } from '../mocks/localStorageMock';
 
 describe('areNewFactsAvailable', () => {
   it('returns false when no new facts are available', () => {
