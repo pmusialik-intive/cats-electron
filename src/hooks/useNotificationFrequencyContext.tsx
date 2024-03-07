@@ -45,9 +45,8 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
 
     const timeoutId = setTimeout(() => {
       if (areNewFactsAvailable(catFacts)) {
-        toast({
-          title: 'Info',
-          description: 'New cat facts available!',
+        new Notification('New Cat Facts Available', {
+          body: 'Check out the latest cat facts!',
         });
       }
 
