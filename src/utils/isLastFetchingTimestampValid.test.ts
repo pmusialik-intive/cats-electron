@@ -9,6 +9,10 @@ describe('isLastFetchingTimestampValid', () => {
     expect(isLastFetchingTimestampValid(NaN)).toBe(false);
   });
 
+  test('returns false for 0 timestamp', () => {
+    expect(isLastFetchingTimestampValid(0)).toBe(false);
+  });
+
   test('returns false for negative timestamp', () => {
     expect(isLastFetchingTimestampValid(-1)).toBe(false);
   });

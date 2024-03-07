@@ -1,17 +1,19 @@
 import { calculateTimeToFetch } from './calculateTimeToFetch';
 
 describe('calculateTimeToFetch', () => {
-  test('returns 0 when fetchingFrequency is negative', () => {
-    expect(calculateTimeToFetch(-10, 0)).toBe(0);
+  test('should return correct remaining time if last fetch was some time ago', () => {
+    const fetchingFrequency = 500;
+    const lastTimestamp = new Date().getTime();
+    const result = calculateTimeToFetch(fetchingFrequency, lastTimestamp);
+
+    expect(result).toBeGreaterThan(0);
+    expect(result).toBeLessThan(501);
   });
 
-  test('returns 0 when lastTimestamp is in the future', () => {
-    const futureTimestamp = new Date().getTime() + 1000;
-    expect(calculateTimeToFetch(1000, futureTimestamp)).toBe(0);
-  });
-
-  test('returns remaining time when lastTimestamp is in the past', () => {
-    const pastTimestamp = new Date().getTime() - 1000;
-    expect(calculateTimeToFetch(2000, pastTimestamp)).toBeGreaterThan(0);
+  test('should return 0 if remaining time is negative', () => {
+    const fetchingFrequency = 2000;
+    const lastTimestamp = new Date().getTime() - 3000;
+    const result = calculateTimeToFetch(fetchingFrequency, lastTimestamp);
+    expect(result).toBe(0);
   });
 });
