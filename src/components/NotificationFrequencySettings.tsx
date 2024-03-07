@@ -23,13 +23,13 @@ export const NotificationFrequencySettings = () => {
 
     toast({
       title: 'Success!',
-      description: 'Notification frequency saved.',
+      description: 'Push notification frequency saved.',
     });
   }, [localFrequency, toast]);
 
   return (
     <div className="py-5">
-      <Label>Notification frequency</Label>
+      <Label>Push notification frequency</Label>
       <div className="flex items-center">
         <Select value={`${localFrequency}`} onValueChange={(value) => setLocalFrequency(value)}>
           <SelectTrigger className="w-[180px]">
