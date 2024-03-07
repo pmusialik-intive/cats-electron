@@ -10,7 +10,7 @@ const UPDATE_FREQUENCY_TEXT = 'Update Frequency';
 const UPDATE_FREQUENCY_VALUE = 10000;
 const FREQUENCY_DEFAULT = 5000;
 
-jest.mock('../utils/fetching-frequency', () => ({
+jest.mock('../utils/local-storage/fetching-frequency', () => ({
   getStoredFetchingFrequency: jest.fn().mockReturnValue(FREQUENCY_DEFAULT),
   storeFetchingFrequency: jest.fn(),
 }));

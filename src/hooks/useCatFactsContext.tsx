@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState, createContext, useContext, ReactNode } from 'react';
 import { CatFact } from '../types/CatFact';
-import { LAST_CAT_FACT_TIMESTAMP } from '../constants/local-storage';
 import { getRandomCatFact } from '../api/getRandomCatFact';
 import { useFetchingFrequencyContext } from './useFetchingFrequencyContext';
+import { STORAGE_KEY } from '../constants/storage-key';
 
 type CatFactsContextType = {
   catFacts: CatFact[];
@@ -34,7 +34,7 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
     const fetchData = async () => {
       try {
         const fact = await getRandomCatFact();
-        localStorage.setItem(LAST_CAT_FACT_TIMESTAMP, `${new Date().getTime()}`);
+        localStorage.setItem(STORAGE_KEY.lastCatFactTimestamp, `${new Date().getTime()}`);
 
         setIsLoading(false);
         setIsError(false);
@@ -54,7 +54,7 @@ export const CatFactsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    const lastTimestampNumber = +localStorage.getItem(LAST_CAT_FACT_TIMESTAMP);
+    const lastTimestampNumber = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
     const currentTime = new Date().getTime();
 
     if (isNaN(lastTimestampNumber) || lastTimestampNumber > currentTime || !catFacts.length) {

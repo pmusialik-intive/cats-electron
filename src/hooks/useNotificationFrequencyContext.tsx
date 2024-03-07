@@ -11,11 +11,8 @@ import {
   getStoredNotificationFrequency,
   storeNotificationFrequency,
 } from '../utils/local-storage/notification-frequency';
-import {
-  LAST_CAT_FACT_TIMESTAMP,
-  NEW_FACTS_NOTIFICATION_FACT_TIMESTAMP,
-} from '../constants/local-storage';
 import { useToast } from '../components/ui/use-toast';
+import { STORAGE_KEY } from '../constants/storage-key';
 
 type FrequencyContextType = {
   notificationFrequency: number;
@@ -31,9 +28,9 @@ const NotificationFrequencyContext = createContext<FrequencyContextType>({
 
 const isLastFactDifferent = () => {
   const lastNotificationFactTimestamp = +localStorage.getItem(
-    NEW_FACTS_NOTIFICATION_FACT_TIMESTAMP,
+    STORAGE_KEY.newFactsNotificationFactTimestamp,
   );
-  const lastCatFactTimestamp = +localStorage.getItem(LAST_CAT_FACT_TIMESTAMP);
+  const lastCatFactTimestamp = +localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp);
 
   if (isNaN(lastNotificationFactTimestamp) || isNaN(lastCatFactTimestamp)) {
     return false;
@@ -62,8 +59,8 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
       }
 
       localStorage.setItem(
-        NEW_FACTS_NOTIFICATION_FACT_TIMESTAMP,
-        localStorage.getItem(LAST_CAT_FACT_TIMESTAMP),
+        STORAGE_KEY.newFactsNotificationFactTimestamp,
+        localStorage.getItem(STORAGE_KEY.lastCatFactTimestamp),
       );
     }, notificationFrequency);
 

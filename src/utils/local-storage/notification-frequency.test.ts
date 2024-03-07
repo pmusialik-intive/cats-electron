@@ -1,8 +1,8 @@
-import { NOTIFICATION_FREQUENCY } from '../../constants/local-storage';
 import {
   defaultNotificationFrequencyValue,
   notificationFrequencyOptions,
 } from '../../constants/notification-frequency';
+import { STORAGE_KEY } from '../../constants/storage-key';
 import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredNotificationFrequency,
@@ -35,7 +35,7 @@ describe('getStoredNotificationFrequency', () => {
 
   it('returns stored value if it is valid', () => {
     const validFrequency = notificationFrequencyOptions[0].value;
-    localStorageMock.setItem(NOTIFICATION_FREQUENCY, `${validFrequency}`);
+    localStorageMock.setItem(STORAGE_KEY.notificationFrequency, `${validFrequency}`);
     expect(getStoredNotificationFrequency()).toBe(validFrequency);
   });
 });
@@ -49,7 +49,7 @@ describe('storeNotificationFrequency', () => {
     const validFrequency = notificationFrequencyOptions[0].value;
     storeNotificationFrequency(validFrequency);
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      NOTIFICATION_FREQUENCY,
+      STORAGE_KEY.notificationFrequency,
       `${validFrequency}`,
     );
   });
@@ -58,7 +58,7 @@ describe('storeNotificationFrequency', () => {
     const invalidFrequency = 999;
     storeNotificationFrequency(invalidFrequency);
     expect(localStorageMock.setItem).not.toHaveBeenCalledWith(
-      NOTIFICATION_FREQUENCY,
+      STORAGE_KEY.notificationFrequency,
       `${invalidFrequency}`,
     );
   });

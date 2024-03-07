@@ -2,7 +2,7 @@ import {
   defaultFetchingFrequencyValue,
   fetchingFrequencyOptions,
 } from '../../constants/fetching-frequency';
-import { FETCHING_FREQUENCY } from '../../constants/local-storage';
+import { STORAGE_KEY } from '../../constants/storage-key';
 import { localStorageMock } from '../../test-utils/localStorageMock';
 import {
   getStoredFetchingFrequency,
@@ -35,7 +35,7 @@ describe('getStoredFetchingFrequency', () => {
 
   it('returns stored value if it is valid', () => {
     const validFrequency = fetchingFrequencyOptions[0].value;
-    localStorageMock.setItem(FETCHING_FREQUENCY, `${validFrequency}`);
+    localStorageMock.setItem(STORAGE_KEY.fetchingFrequency, `${validFrequency}`);
     expect(getStoredFetchingFrequency()).toBe(validFrequency);
   });
 });
@@ -48,14 +48,17 @@ describe('storeFetchingFrequency', () => {
   it('stores a valid frequency', () => {
     const validFrequency = fetchingFrequencyOptions[0].value;
     storeFetchingFrequency(validFrequency);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(FETCHING_FREQUENCY, `${validFrequency}`);
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      STORAGE_KEY.fetchingFrequency,
+      `${validFrequency}`,
+    );
   });
 
   it('does not store an invalid frequency', () => {
     const invalidFrequency = 999;
     storeFetchingFrequency(invalidFrequency);
     expect(localStorageMock.setItem).not.toHaveBeenCalledWith(
-      FETCHING_FREQUENCY,
+      STORAGE_KEY.fetchingFrequency,
       `${invalidFrequency}`,
     );
   });

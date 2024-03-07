@@ -1,14 +1,14 @@
-import { FAVORITE_CAT_FACTS } from '../../constants/local-storage';
+import { STORAGE_KEY } from '../../constants/storage-key';
 import { CatFact } from '../../types/CatFact';
 
 export const getStoredFavorites = (): CatFact[] => {
-  const storedFavorites = localStorage.getItem(FAVORITE_CAT_FACTS);
+  const storedFavorites = localStorage.getItem(STORAGE_KEY.favoriteCatFacts);
 
   return storedFavorites ? JSON.parse(storedFavorites) : [];
 };
 
 export const storeFavorites = (favorites: CatFact[]): void => {
-  localStorage.setItem(FAVORITE_CAT_FACTS, JSON.stringify(favorites));
+  localStorage.setItem(STORAGE_KEY.favoriteCatFacts, JSON.stringify(favorites));
 };
 
 export const addFavorite = (newFavorite: CatFact): void => {
@@ -19,12 +19,12 @@ export const addFavorite = (newFavorite: CatFact): void => {
   }
 
   const updatedFavorites = [newFavorite, ...storedFavorites];
-  localStorage.setItem(FAVORITE_CAT_FACTS, JSON.stringify(updatedFavorites));
+  localStorage.setItem(STORAGE_KEY.favoriteCatFacts, JSON.stringify(updatedFavorites));
 };
 
 export const removeFavorite = (id: string): void => {
   const storedFavorites = getStoredFavorites();
   const updatedFavorites = storedFavorites.filter((fact) => fact._id !== id);
 
-  localStorage.setItem(FAVORITE_CAT_FACTS, JSON.stringify(updatedFavorites));
+  localStorage.setItem(STORAGE_KEY.favoriteCatFacts, JSON.stringify(updatedFavorites));
 };

@@ -2,13 +2,13 @@ import {
   defaultFetchingFrequencyValue,
   fetchingFrequencyOptions,
 } from '../../constants/fetching-frequency';
-import { FETCHING_FREQUENCY } from '../../constants/local-storage';
+import { STORAGE_KEY } from '../../constants/storage-key';
 
 export const isValidFetchingFrequency = (value: number) =>
   fetchingFrequencyOptions.some((option) => option.value === +value);
 
 export const getStoredFetchingFrequency = () => {
-  const storedFetchingFrequency = +localStorage.getItem(FETCHING_FREQUENCY);
+  const storedFetchingFrequency = +localStorage.getItem(STORAGE_KEY.fetchingFrequency);
 
   return isValidFetchingFrequency(storedFetchingFrequency)
     ? storedFetchingFrequency
@@ -19,6 +19,6 @@ export const storeFetchingFrequency = (value: unknown) => {
   const numberValue = +value;
 
   if (isValidFetchingFrequency(numberValue)) {
-    localStorage.setItem(FETCHING_FREQUENCY, `${numberValue}`);
+    localStorage.setItem(STORAGE_KEY.fetchingFrequency, `${numberValue}`);
   }
 };
