@@ -3,6 +3,6 @@ export const STORAGE_KEY = {
   favoriteCatFacts: 'favoriteCatFacts',
   notificationFrequency: 'notificationFrequency',
   fetchingFrequency: 'fetchingFrequency',
-  notifiedFactsIds: 'notifiedFactsIds',
-  notifiedTimestamp: 'notifiedTimestamp',
+  pushNotificationFactsIds: 'pushNotificationFactsIds',
+  pushNotificationTimestamp: 'pushNotificationTimestamp',
 } as const;
