@@ -21,3 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 3. Start the application:
    `npm start`
+
+
+Make sure to enable system notification from Electron to receive push notifications!
+![image](https://github.com/pmusialik-intive/cats-electron/assets/115072317/58fa0197-5b45-444e-9165-b469aef4d6c2)
