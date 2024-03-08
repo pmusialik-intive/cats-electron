@@ -29,9 +29,9 @@ Before you begin, ensure you have the latest version of Node.js and npm installe
 
 3. Start the application:
 
-```bash
-  npm start
-```
+   ```bash
+   npm start
+   ```
 
 ## Usage
 
