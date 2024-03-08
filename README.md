@@ -14,7 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Before you begin, ensure you have the latest version of Node.js installed, as this project relies on Node.js runtime.
+Before you begin, ensure you have the latest version of Node.js and npm installed. This project relies on the Node.js runtime, and npm (Node Package Manager) is essential for managing the project's dependencies.
 
 ### Installing
 
