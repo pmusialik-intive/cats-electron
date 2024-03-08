@@ -26,23 +26,25 @@ Before you begin, ensure you have the latest version of Node.js installed, as th
 
 ## Usage
 
-Once the application is started, navigate through the UI to set your preferences for receiving cat facts notifications. You can adjust notification frequency under the settings tab.
+Once the application is started, navigate through the UI to set your preferences for receiving cat facts notifications. You can adjust fetching and notification frequencies under the settings tab.
 
-Make sure to enable system notification from Electron to receive push notifications!
+Additionally, you can add your favorite cat facts to a favorites list. Simply click the start icon next to a cat fact to save it to your favorites for easy access later.
+
+Make sure to enable system notifications from Electron to receive push notifications!
 ![image](https://github.com/pmusialik-intive/cats-electron/assets/115072317/58fa0197-5b45-444e-9165-b469aef4d6c2)
 
 ## External API Usage
 
 This app leverages the Cat Fact API to fetch interesting facts about cats.
 
-### API Details:
+### API Details
 
 - **Base URL**: `https://cat-fact.herokuapp.com/facts`
 - **Documentation and Endpoints**:
   - Main Page: [https://cat-fact.herokuapp.com/](https://cat-fact.herokuapp.com/)
   - API Documentation: [https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html)
 
-### API Availability:
+### API Availability
 
 The Cat Fact API is a free resource and I cannot guarantee the API's availability or uptime.
 
