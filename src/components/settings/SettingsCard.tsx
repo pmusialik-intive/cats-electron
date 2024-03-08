@@ -8,15 +8,14 @@ export const SettingsCard = () => {
       <CardHeader className="pb-0">
         <CardTitle>Frequencies</CardTitle>
         <CardDescription>
-          <p>Adjust the frequency settings for your interactions here.</p>
-          <p>
+          <span className="block mb-1">
             The fetching frequency option allows you to set how often the system checks for new cat
             facts.
-          </p>
-          <p>
+          </span>
+          <span>
             The push notifications frequency setting controls how frequently you'll receive push
             notifications alerting you to new cat facts available.
-          </p>
+          </span>
         </CardDescription>
       </CardHeader>
       <CardContent>
