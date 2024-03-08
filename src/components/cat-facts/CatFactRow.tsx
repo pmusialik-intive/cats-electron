@@ -25,7 +25,7 @@ export const CatFactRow = ({ fact }: Props) => {
 
   const handleAddToFavorites = useCallback(() => {
     addFavorite(fact);
-    handleRemove();
+    removeCatFact(fact._id);
     fetchCatFact();
 
     toast({
