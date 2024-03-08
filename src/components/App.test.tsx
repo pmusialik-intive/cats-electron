@@ -1,8 +1,8 @@
 import { render, act, waitFor, screen } from '@testing-library/react';
 import { App } from './App';
-import { CAT_FACT_URL } from '../api/catFactUrls';
 import '@testing-library/jest-dom';
 import { AppProviders } from './AppProviders';
+import { CAT_FACT_URL } from '../constants/api';
 
 const mockText = 'Cats are nice';
 
