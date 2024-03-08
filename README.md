@@ -63,4 +63,4 @@ https://github.com/pmusialik-intive/cats-electron/assets/115072317/d4017d72-0ee3
 - review the code deeply to unify naming conventions for better clarity and consistency,
 - consider using react-query or Redux instead of contexts,
 - store API url in .env,
-- create more testing utils.
+- create more testing utils and mocks.
