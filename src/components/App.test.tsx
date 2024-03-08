@@ -6,6 +6,13 @@ import { CAT_FACT_URL } from '../constants/api';
 
 const mockText = 'Cats are nice';
 
+jest.mock('./common/Icon', () => {
+  return {
+    __esModule: true,
+    Icon: () => <span></span>,
+  };
+});
+
 describe('App', () => {
   beforeEach(async () => {
     global.fetch = jest.fn().mockResolvedValue({
