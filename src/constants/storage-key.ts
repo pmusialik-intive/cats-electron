@@ -1,3 +1,5 @@
+import { ObjectValues } from '../types/ObjectValues';
+
 export const STORAGE_KEY = {
   lastCatFactTimestamp: 'lastCatFactTimestamp',
   favoriteCatFacts: 'favoriteCatFacts',
@@ -6,3 +8,5 @@ export const STORAGE_KEY = {
   pushNotificationFactsIds: 'pushNotificationFactsIds',
   pushNotificationTimestamp: 'pushNotificationTimestamp',
 } as const;
+
+export type StorageKey = ObjectValues<typeof STORAGE_KEY>;
