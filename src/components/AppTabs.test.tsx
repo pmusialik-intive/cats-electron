@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { AppTabs } from './AppTabs';
-import * as CatFactsCardModule from './CatFactsCard';
-import * as FavoritesCardModule from './FavoritesCard';
+import * as CatFactsCardModule from './cat-facts/CatFactsCard';
+import * as FavoritesCardModule from './favorites/FavoritesCard';
 import { act } from 'react-dom/test-utils';
 
 jest.mock('./CatFactsCard', () => ({

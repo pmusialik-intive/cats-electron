@@ -1,8 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { TAB_ID } from '../constants/tabs';
-import { CatFactsCard } from './CatFactsCard';
-import { FavoritesCard } from './FavoritesCard';
-import { SettingsCard } from './SettingsCard';
+import { CatFactsCard } from './cat-facts/CatFactsCard';
+import { FavoritesCard } from './favorites/FavoritesCard';
+import { SettingsCard } from './settings/SettingsCard';
 
 const tabs = [
   {

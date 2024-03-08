@@ -1,6 +1,6 @@
-import { Card, CardContent, CardFooter } from './ui/card';
-import { Button } from './ui/button';
-import { useCatFactsContext } from '../hooks/useCatFactsContext';
+import { Card, CardContent, CardFooter } from '../ui/card';
+import { Button } from '../ui/button';
+import { useCatFactsContext } from '../../hooks/useCatFactsContext';
 
 import { CatFactRow } from './CatFactRow';
 

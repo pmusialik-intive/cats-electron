@@ -1,4 +1,4 @@
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import {
   Select,
   SelectContent,
@@ -6,12 +6,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from '../ui/select';
 import { useCallback, useState } from 'react';
-import { useToast } from './ui/use-toast';
-import { useNotificationFrequencyContext } from '../hooks/useNotificationFrequencyContext';
-import { Label } from './ui/label';
-import { notificationFrequencyOptions } from '../constants/notification-frequency';
+import { useToast } from '../ui/use-toast';
+import { useNotificationFrequencyContext } from '../../hooks/useNotificationFrequencyContext';
+import { Label } from '../ui/label';
+import { notificationFrequencyOptions } from '../../constants/notification-frequency';
 
 export const NotificationFrequencySettings = () => {
   const { toast } = useToast();

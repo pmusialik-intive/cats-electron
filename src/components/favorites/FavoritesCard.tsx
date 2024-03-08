@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Card, CardContent } from './ui/card';
-import { CatFact } from '../types/CatFact';
-import { getStoredFavorites, storeFavorites } from '../utils/local-storage/favorites';
-import { useToast } from './ui/use-toast';
+import { Card, CardContent } from '../ui/card';
+import { CatFact } from '../../types/CatFact';
+import { getStoredFavorites, storeFavorites } from '../../utils/local-storage/favorites';
+import { useToast } from '../ui/use-toast';
 import { FavoriteFactRow } from './FavoriteFactRow';
 
 export const FavoritesCard = () => {

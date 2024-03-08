@@ -1,5 +1,5 @@
 import { Trash2 } from 'lucide-react';
-import { CatFact } from '../types/CatFact';
+import { CatFact } from '../../types/CatFact';
 
 interface Props {
   fact: CatFact;

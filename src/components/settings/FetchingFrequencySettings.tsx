@@ -1,4 +1,4 @@
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import {
   Select,
   SelectContent,
@@ -6,12 +6,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from '../ui/select';
 import { useCallback, useState } from 'react';
-import { useToast } from './ui/use-toast';
-import { useFetchingFrequencyContext } from '../hooks/useFetchingFrequencyContext';
-import { Label } from './ui/label';
-import { fetchingFrequencyOptions } from '../constants/fetching-frequency';
+import { useToast } from '../ui/use-toast';
+import { useFetchingFrequencyContext } from '../../hooks/useFetchingFrequencyContext';
+import { Label } from '../ui/label';
+import { fetchingFrequencyOptions } from '../../constants/fetching-frequency';
 
 export const FetchingFrequencySettings = () => {
   const { toast } = useToast();
