@@ -1,6 +1,6 @@
-import { Trash2 } from 'lucide-react';
 import { CatFact } from '../../types/CatFact';
 import { ListItem } from '../common/ListItem';
+import { Icon } from '../common/Icon';
 
 interface Props {
   fact: CatFact;
@@ -11,7 +11,7 @@ export const FavoriteFactRow = ({ fact, onRemove }: Props) => {
   return (
     <ListItem text={fact.text}>
       <button className="ml-1" onClick={() => onRemove(fact._id)}>
-        <Trash2 strokeWidth={1.5} size={16} />
+        <Icon name="trash-2" />
       </button>
     </ListItem>
   );

@@ -3,8 +3,8 @@ import { CatFact } from '../../types/CatFact';
 import { addFavorite } from '../../utils/local-storage/favorites';
 import { useToast } from '../ui/use-toast';
 import { useCatFactsContext } from '../../hooks/useCatFactsContext';
-import { Star, Trash2 } from 'lucide-react';
 import { ListItem } from '../common/ListItem';
+import { Icon } from '../common/Icon';
 
 interface Props {
   fact: CatFact;
@@ -37,10 +37,10 @@ export const CatFactRow = ({ fact }: Props) => {
   return (
     <ListItem text={fact.text}>
       <button className="ml-1" onClick={handleAddToFavorites}>
-        <Star strokeWidth={1.5} size={16} />
+        <Icon name="star" />
       </button>
       <button className="ml-1" onClick={handleRemove}>
-        <Trash2 strokeWidth={1.5} size={16} />
+        <Icon name="trash-2" />
       </button>
     </ListItem>
   );
