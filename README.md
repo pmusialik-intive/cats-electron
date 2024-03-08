@@ -25,3 +25,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 Make sure to enable system notification from Electron to receive push notifications!
 ![image](https://github.com/pmusialik-intive/cats-electron/assets/115072317/58fa0197-5b45-444e-9165-b469aef4d6c2)
+
+
+## Demo
+
+https://github.com/pmusialik-intive/cats-electron/assets/115072317/32870332-f795-4d89-8946-4a288abecb68
+
+
