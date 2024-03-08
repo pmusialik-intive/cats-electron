@@ -16,6 +16,7 @@ import { STORAGE_KEY } from '../constants/storage-key';
 import { areNewFactsAvailable } from '../utils/areNewFactsAvailable';
 import { useCatFactsContext } from './useCatFactsContext';
 import { calculateTimeToFetch } from '../utils/calculateTimeToFetch';
+import { getStorageNumber, storeArray, storeNumber } from '../utils/local-storage/local-storage';
 
 type FrequencyContextType = {
   notificationFrequency: number;
@@ -41,7 +42,7 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
   }, [notificationFrequency]);
 
   useEffect(() => {
-    const lastNotifiedTimestamp = +localStorage.getItem(STORAGE_KEY.pushNotificationTimestamp);
+    const lastNotifiedTimestamp = getStorageNumber(STORAGE_KEY.pushNotificationTimestamp) || -1;
 
     const timeoutId = setTimeout(() => {
       if (areNewFactsAvailable(catFacts)) {
@@ -50,12 +51,11 @@ export const NotificationFrequencyProvider = ({ children }: { children: ReactNod
         });
       }
 
-      localStorage.setItem(
+      storeNumber(STORAGE_KEY.pushNotificationTimestamp, new Date().getTime());
+      storeArray(
         STORAGE_KEY.pushNotificationFactsIds,
-        JSON.stringify(catFacts.map((fact) => fact._id)),
+        catFacts.map((fact) => fact._id),
       );
-
-      localStorage.setItem(STORAGE_KEY.pushNotificationTimestamp, new Date().getTime().toString());
     }, calculateTimeToFetch(notificationFrequency, lastNotifiedTimestamp));
 
     return () => {
