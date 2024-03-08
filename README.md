@@ -29,6 +29,7 @@ Make sure to enable system notification from Electron to receive push notificati
 
 ## Demo
 
-https://github.com/pmusialik-intive/cats-electron/assets/115072317/32870332-f795-4d89-8946-4a288abecb68
+https://github.com/pmusialik-intive/cats-electron/assets/115072317/d4017d72-0ee3-48d8-b805-6a44c314ae54
+
 
 
