@@ -11,7 +11,7 @@ export const CatFactsCard = () => {
     <Card>
       <CardContent className="space-y-2 p-5">
         {catFacts.length === 0 && isLoading && <p>Loading...</p>}
-        {catFacts.length === 0 && isError && <p>Sorry, something went wrong!</p>}
+        {catFacts.length === 0 && !isLoading && isError && <p>Sorry, something went wrong!</p>}
 
         {catFacts.map((fact) => (
           <CatFactRow key={fact._id} fact={fact} />
