@@ -5,12 +5,12 @@ import * as CatFactsCardModule from './cat-facts/CatFactsCard';
 import * as FavoritesCardModule from './favorites/FavoritesCard';
 import { act } from 'react-dom/test-utils';
 
-jest.mock('./CatFactsCard', () => ({
+jest.mock('./cat-facts/CatFactsCard', () => ({
   __esModule: true,
   CatFactsCard: jest.fn(() => <div data-testid="mockCatFactsCard">Mock Cat Facts</div>),
 }));
 
-jest.mock('./FavoritesCard', () => ({
+jest.mock('./favorites/FavoritesCard', () => ({
   __esModule: true,
   FavoritesCard: jest.fn(() => <div data-testid="mockFavoritesCard">Mock Favorites</div>),
 }));
