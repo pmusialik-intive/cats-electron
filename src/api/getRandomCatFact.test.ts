@@ -1,6 +1,6 @@
 import { getRandomCatFact } from './getRandomCatFact';
-import { CAT_FACT_URL } from './catFactUrls';
 import { isValidCatFact } from '../validators/isValidCatFact';
+import { CAT_FACT_URL } from '../constants/api';
 
 describe('getRandomCatFact', () => {
   beforeEach(() => {

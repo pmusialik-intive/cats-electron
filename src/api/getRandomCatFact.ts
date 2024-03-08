@@ -1,6 +1,6 @@
+import { CAT_FACT_URL } from '../constants/api';
 import { CatFact } from '../types/CatFact';
 import { isValidCatFact } from '../validators/isValidCatFact';
-import { CAT_FACT_URL } from './catFactUrls';
 
 const INVALID_CAT_FACT = 'Invalid cat fact response';
 
