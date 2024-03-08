@@ -28,7 +28,10 @@ Before you begin, ensure you have the latest version of Node.js and npm installe
    **Important for Windows Users:** Before running npm install, first delete the package-lock.json file. If you encounter issues during the installation, also delete the node_modules directory and then run npm install again.
 
 3. Start the application:
-   `npm start`
+
+```bash
+  npm start
+```
 
 ## Usage
 
